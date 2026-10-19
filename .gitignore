@@ -1,0 +1,43 @@
+.data/
+config.json
+__pycache__/
+*.pyc
+.backups/
+.logs/
+tmp/
+.mobile-private/
+android/.gradle-standalone/
+android/build/
+android/standalone/.gradle/
+android/standalone/build/
+android/standalone/app/build/
+android/standalone/app/src/main/assets/engine/
+android/standalone/local.properties
+
+# Private test packages embed service credentials and must stay local.
+/release/
+*.apk
+*.aab
+*.apks
+*.idsig
+default_model.json
+
+# Local credentials and signing material.
+.env
+.env.*
+!.env.example
+*.jks
+*.keystore
+*.p12
+*.pfx
+*.key
+*.pem
+key.properties
+keystore.properties
+
+# Generated dependencies, caches and diagnostics.
+node_modules/
+*.log
+**/.gradle/
+**/build/
+local.properties

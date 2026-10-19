@@ -1,0 +1,39 @@
+plugins {
+    id 'com.android.application'
+    id 'com.chaquo.python'
+}
+android {
+    namespace 'cn.zhiheng.mobile'
+    compileSdk 36
+    defaultConfig {
+        applicationId 'cn.zhiheng.mobile'
+        minSdk 26
+        targetSdk 34
+        versionCode 51
+        versionName '0.4.43-test'
+        testInstrumentationRunner 'cn.zhiheng.mobile.SmokeInstrumentation'
+        ndk { abiFilters 'arm64-v8a', 'x86_64' }
+    }
+    signingConfigs {
+        localTest {
+            storeFile file('../../../.mobile-private/android-test.jks')
+            storePassword 'android'
+            keyAlias 'zhiheng-test'
+            keyPassword 'android'
+        }
+    }
+    buildTypes { release { signingConfig signingConfigs.localTest; minifyEnabled false } }
+    testBuildType 'release'
+    compileOptions { sourceCompatibility JavaVersion.VERSION_1_8; targetCompatibility JavaVersion.VERSION_1_8 }
+    androidResources { noCompress += ['zip'] }
+}
+dependencies {
+    implementation files('libs/vosk-android-0.3.75.aar')
+    implementation files('libs/jna-5.18.1.aar')
+}
+chaquopy {
+    defaultConfig {
+        version '3.12'
+        buildPython 'C:/Users/lxx/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe'
+    }
+}

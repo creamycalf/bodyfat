@@ -1,0 +1,29 @@
+{
+  "ai": {
+    "enabled": true,
+    "provider": "openai-compatible",
+    "base_url": "https://your-provider.example/v1",
+    "api_key_env": "ZHIHENG_AI_API_KEY",
+    "model": "YOUR_MODEL_ID",
+    "vision_model": "YOUR_VISION_MODEL_ID",
+    "protocol": "chat_completions",
+    "timeout_seconds": 75,
+    "vision_timeout_seconds": 180,
+    "retry_count": 1
+  },
+  "storage": {
+    "max_request_mb": 12,
+    "max_backup_mb": 256,
+    "max_image_mb": 8,
+    "max_image_pixels": 40000000,
+    "delete_original_after_days": 30
+  },
+  "app": {
+    "name": "知衡",
+    "timezone": "Asia/Shanghai",
+    "require_confirmation_before_record": true
+  },
+  "server": {
+    "rate_limit_per_minute": 240
+  }
+}

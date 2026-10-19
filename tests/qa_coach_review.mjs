@@ -1,0 +1,30 @@
+import {createRequire} from 'node:module';
+const require=createRequire(import.meta.url);
+const {chromium}=require('../tmp/ui-tools/node_modules/playwright');
+const browser=await chromium.launch({headless:true,channel:'msedge'});
+const page=await browser.newPage({viewport:{width:390,height:900}}),errors=[];
+page.on('pageerror',e=>errors.push(e.message));
+try{
+ await page.goto('http://127.0.0.1:8802');
+ await page.getByRole('button',{name:'恢复未完成请求',exact:true}).waitFor();
+ await page.reload();
+ await page.getByRole('button',{name:'恢复未完成请求',exact:true}).click();
+ await page.waitForFunction(()=>!document.body.textContent.includes('恢复未完成请求'));
+ let state=await page.evaluate(()=>fetch('/api/work/state').then(r=>r.json()));
+ if(state.records.length!==1||state.profile.age!==38||state.interrupted_turns.length)throw Error('Recovery mismatch');
+ await page.locator('nav [data-view="plan"]').click();
+ await page.getByRole('button',{name:'明天起试最低行动',exact:true}).click();
+ await page.waitForFunction(async()=>{const s=await fetch('/api/work/state').then(r=>r.json());return s.plans.length===2;});
+ await page.reload();
+ state=await page.evaluate(()=>fetch('/api/work/state').then(r=>r.json()));
+ if(state.plans[1].items[0].detail!=='只记一句感受'||state.feedback.length!==7||state.reviews.length!==1)throw Error('Review mismatch');
+ await page.locator('nav [data-view="plan"]').click();
+ await page.getByRole('textbox',{name:'复盘感受或困难',exact:true}).fill('打字不方便，改用语音');
+ await page.getByRole('button',{name:'明天起替换「记录感受」',exact:true}).click();
+ await page.waitForFunction(async()=>{const s=await fetch('/api/work/state').then(r=>r.json());return s.plans.length===3;});
+ await page.reload();
+ state=await page.evaluate(()=>fetch('/api/work/state').then(r=>r.json()));
+ if(state.plans[2].items[0].detail!=='用语音记下感受'||state.reviews[1].note!=='打字不方便，改用语音'||state.feedback.length!==7)throw Error('Replacement mismatch');
+ if(errors.length)throw Error(errors.join('\n'));
+ console.log('PASS: reload recovery, one record, minimum and replacement future versions, review note, seven feedback records preserved');
+}finally{await browser.close();}

@@ -1,0 +1,27 @@
+.safety-note {
+  padding: 10px 12px;
+  border-left: 3px solid #c28535;
+  background: #fff8e8;
+  color: #6f5225;
+  font-size: 13px;
+}
+
+#photo-category { width: auto; min-width: 110px; }
+.image-review { margin: 10px 0; padding: 12px; background: #f6f8f4; border-radius: 12px; }
+.candidate { display: grid; grid-template-columns: repeat(auto-fit,minmax(150px,1fr)); gap: 8px 12px; margin: 10px 0; padding: 10px; border: 1px solid #dfe7df; border-radius: 10px; }
+.candidate legend { grid-column: 1 / -1; padding: 0 4px; font-weight: 650; }
+.candidate input[type="checkbox"] { width: auto; }
+.candidate-field { display: grid; gap: 4px; color: #506058; font-size: 13px; }
+.candidate-field input { font-family: inherit; color: #1f3028; }
+.basis-warning { padding: 10px 12px; border-left: 3px solid #b46a3c; background: #fff2e8; color: #70452d; font-size: 13px; }
+.link-button { padding: 0; border: 0; background: none; color: #1d7961; text-decoration: underline; font: inherit; }
+.source-highlight { outline: 3px solid #e2b965; outline-offset: 3px; }
+.plan-diff { margin: 10px 0; padding: 8px 10px; background: #f5f8f5; border-radius: 10px; }
+.plan-diff p { margin: 6px 0; font-size: 13px; }
+.meal-photo{display:block;width:100%;max-width:420px;max-height:320px;object-fit:contain;border-radius:12px;margin:12px 0;background:#f1f5f0}.dynamic-module li{line-height:1.8;margin:8px 0}.dynamic-module svg{width:100%;height:auto}header [data-view=mine]{font-size:13px}.stat strong{font-size:clamp(17px,3.5vw,25px)}
+.module-body h3{margin:20px 0 8px}.module-body p{margin:8px 0}.module-point{padding-left:14px;border-left:3px solid #dce7df}.image-nutrition{padding:12px;background:#e9f3ed;border-radius:12px;white-space:normal}.image-nutrition p{margin:7px 0}
+.job-thumbnail{max-width:120px;max-height:90px;object-fit:contain;border-radius:8px}
+.item h3{overflow-wrap:anywhere}.card{min-width:0}.grid>div{min-width:0}
+.page-save-note{white-space:normal;margin-top:12px;font-size:12px;color:var(--muted);display:flex;gap:8px;flex-wrap:wrap;align-items:center}.page-save-note button{font-size:12px;padding:3px 7px}
+.plan-document.plan-card{border:0;padding:0;margin:0}.plan-overview{padding:25px 27px;background:#edf3ed;border-radius:18px;margin:0 0 28px}.plan-meta{display:flex;flex-wrap:wrap;gap:16px;font-size:12px;color:#647b70;margin-bottom:14px}.plan-meta>span:first-child{color:#346b55;font-weight:650}.plan-overview h2{font-size:23px;line-height:1.5;letter-spacing:-.4px;margin:0 0 12px}.plan-goal p{font-size:14px;color:#52695d;margin:0;line-height:1.8}.plan-overview .actions{margin-top:20px}.plan-step{display:flex;gap:19px;padding:23px 4px}.plan-step+.plan-step{border-top:1px solid #e8ede7}.plan-number{font-size:13px;color:#7d9a86;letter-spacing:1px;padding-top:3px}.plan-step-content{min-width:0;flex:1}.plan-step-heading{display:flex;align-items:baseline;justify-content:space-between;gap:18px}.plan-step-heading h3{font-size:19px;margin:0;font-weight:650}.plan-step-heading>span{font-size:12px;line-height:1.7;color:#78897f;max-width:45%;text-align:right}.plan-subtitle{font-size:13px;color:#799082;margin:6px 0 14px}.plan-instructions{font-size:14px;color:#43594c;line-height:1.9}.plan-instructions p{margin:10px 0;line-height:1.95}.plan-instructions strong{font-weight:600;color:#2e4b3b}.plan-expand{margin-top:12px;font-size:13px}.plan-expand summary{font-weight:500;color:#397c67}.plan-expand[open]{padding:12px 16px;background:#f0f4ef;border-radius:10px}.plan-minimum{font-size:12px;color:#6b8274;margin:14px 0 0}.plan-footnote{margin-top:20px;padding:15px 0;font-size:13px;color:#718079}.plan-footnote summary{font-weight:500}.plan-footnote li{line-height:1.9;margin:8px 0}.plan-change{padding:16px 0}.plan-change p{margin:5px 0}.plan-footnote+.plan-footnote{margin-top:0}.plan-document~.dynamic-module{margin-top:24px}#plan>.heading small{display:none}#plan>.heading{margin-bottom:22px}@media(max-width:760px){.plan-overview{padding:21px}.plan-overview h2{font-size:21px}.plan-step{gap:12px;padding:23px 0}.plan-step-heading{display:block}.plan-step-heading>span{display:block;text-align:left;max-width:none;margin-top:6px}.plan-step-heading h3{font-size:18px}.plan-instructions{font-size:14px}}
+.thinking-status small{display:block;color:var(--muted);margin:8px 0;font-size:12px}.thinking-status strong{font-weight:500}.thinking-dot{display:inline-block;width:9px;height:9px;margin-right:9px;border-radius:50%;background:var(--green);animation:thinking-pulse 1.4s ease-in-out infinite}.thinking-status details{font-size:12px;color:var(--muted);white-space:normal}.thinking-status details p{white-space:pre-line}.thinking-status summary{font-weight:400}@keyframes thinking-pulse{50%{opacity:.3}}@media(prefers-reduced-motion:reduce){.thinking-dot{animation:none}}

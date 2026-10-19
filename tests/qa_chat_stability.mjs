@@ -1,0 +1,33 @@
+import {createRequire} from 'node:module';
+const require=createRequire(import.meta.url),{chromium}=require('../tmp/ui-tools/node_modules/playwright');
+const browser=await chromium.launch({headless:true,channel:'msedge'});
+const page=await browser.newPage({viewport:{width:390,height:900}}),errors=[];
+page.on('pageerror',e=>errors.push(e.message));let requests=0;
+page.on('request',r=>{if(r.url().endsWith('/api/work/chat-stream'))requests++;});
+try{
+ await page.goto('http://127.0.0.1:8795');
+ await page.getByText('数据已连接',{exact:true}).waitFor();
+ await page.locator('#message').fill('先聊聊，暂时不制定计划');
+ await page.locator('#message').press('Enter');
+ await page.locator('.thinking-status').waitFor();
+ const status=await page.locator('.thinking-status').elementHandle();
+ await page.locator('.thinking-status summary').click();
+ await page.waitForTimeout(2200);
+ if(!await status.evaluate(el=>el.isConnected&&el.querySelector('details').open))throw Error('Progress timer replaced the status element');
+ await page.getByText('测试回复已完成，未添加健康事实。',{exact:true}).waitFor({timeout:12000});
+ if(!await page.locator('#send').isEnabled()||!await page.locator('#message').isEnabled())throw Error('Composer stayed disabled');
+ await page.locator('#message').fill('继续聊');
+ await page.locator('#message').dispatchEvent('compositionstart');
+ await page.locator('#message').press('Enter');
+ await page.waitForTimeout(300);
+ if(requests!==1)throw Error('IME confirmation submitted prematurely');
+ await page.locator('#message').dispatchEvent('compositionend');
+ await page.locator('#message').press('Enter');
+ await page.waitForFunction(()=>document.querySelectorAll('#messages .bubble.assistant').length===2&&!document.querySelector('.thinking-status'),null,{timeout:12000});
+ if(requests!==2)throw Error('Second turn sent incorrectly');
+ await page.reload();
+ await page.waitForFunction(()=>document.querySelectorAll('#messages .bubble.assistant').length===2);
+ if(errors.length)throw Error(errors.join('\n'));
+ await page.screenshot({path:'tmp/chat-stability-0.4.27.png',fullPage:true});
+ console.log(JSON.stringify({passed:true,stableProgress:true,ime:true,twoTurnsPersisted:true,errors}));
+}finally{await browser.close();}

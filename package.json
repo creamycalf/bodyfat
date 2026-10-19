@@ -1,0 +1,7 @@
+{
+  "name": "zhiheng-health-coach",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {"dev": "powershell -ExecutionPolicy Bypass -File ./start-server.ps1", "start": "powershell -ExecutionPolicy Bypass -File ./start-server.ps1", "dev:mock": "node server.mjs", "dev:python": "powershell -ExecutionPolicy Bypass -File ./start-server.ps1"}
+}

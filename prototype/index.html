@@ -1,0 +1,8 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>知衡 · 产品方向原型</title><link rel="stylesheet" href="prototype.css"><link rel="stylesheet" href="clean.css"></head><body>
+<header class="demo"><div><b>交互原型</b><span>演示数据，不连接 AI</span></div><button onclick="setStage(0)">重新体验</button></header>
+<div class="scenarios" id="scenarios"></div>
+<div class="shell"><aside><a class="brand" href="#" onclick="go('chat');return false"><span class="logo">知</span>知衡<small>把对话，变成持续的照顾。</small></a><nav id="nav"></nav><div class="aside-note"><span class="dot"></span> 对话驱动的健康工作台<p>你负责说出真实情况。<br>AI 整理档案，维护计划，<br>并告诉你每次改动的原因。</p></div><div class="person"><span class="avatar">林</span><div>林先生<small>虚构演示人物</small></div></div></aside>
+<main><div class="page-top"><span id="breadcrumb"></span><span class="muted">演示日 · 09 月 15 日</span></div><div id="content"></div></main></div><div id="toast" role="status"></div>
+<dialog id="compare"><div class="dialog-head"><h2>不是只回复一句，而是更新页面</h2><button onclick="document.querySelector('dialog').close()">关闭 ×</button></div><p class="muted">样例：晚间对话让运动安排和生活档案发生变化，其他模块保留。</p><div class="grid two"><section class="card"><span class="eyebrow">BEFORE / 初版 V1</span><h3>晚饭后散步 20 分钟</h3><p>原先认为晚上有空闲时间。</p><hr><h3>生活档案</h3><p>久坐 · 经常外卖<br>下班时间：待了解</p></section><section class="card green"><span class="eyebrow">AFTER / 调整版 V2</span><h3>午休步行 15 分钟</h3><p>替换晚间运动，不再堆叠任务。</p><hr><h3>生活档案 · 已补充</h3><p>近期 21:30 下班<br>午休可用约 20 分钟</p></section></div><div class="notice">依据：“这周都要加班到九点半，晚上走不了，但午休有二十分钟。”<br>今日看板同步替换任务；饮食方案、目标和历史摄入不变。</div></dialog>
+<script src="prototype.js"></script><script src="journey.js"></script><link rel="stylesheet" href="journey.css"></body></html>
